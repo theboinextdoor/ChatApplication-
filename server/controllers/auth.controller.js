@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs"
 import User from "../models/user.model.js";
 import generatwTokenAndSetCookie from "../utils/generateToken.js";
 
+
 // Signup Routes
 export const signup = async (req, res) => {
     try {
@@ -22,9 +23,7 @@ export const signup = async (req, res) => {
         //  Hash Password here
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
-
-        //    console.log(hashedPassword)   // hashed password      
-
+      
 
         // Profile Pic Avatar
         const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${userName}`
@@ -65,7 +64,7 @@ export const signup = async (req, res) => {
     }
 }
 
-// Login Routes
+// Login Routes 
 export const login = async (req, res) => {
     try {
         const { userName, password } = req.body;
