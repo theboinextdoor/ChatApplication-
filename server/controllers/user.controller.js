@@ -5,7 +5,7 @@ export const getUsersForSideBar = async (req, res) => {
           const loggedInUserId = req.user._id;
           const filterUsers = await User.find({
                _id: { $ne: loggedInUserId }
-          }).select("-password")
+          }).select("-password")    //WE DON'T WANT PASSWORD IN OUR JSON FILE   
 
 
           return res.status(200).json(filterUsers)
