@@ -9,8 +9,9 @@ const MessageContainer = () => {
           <div className="md:min-w-[450px] flex flex-col ">
                <>
                     {
-                         nochatSelected ? <NoChat /> : <>
-                         {/* Header */}
+                         nochatSelected ? <NoChat /> :
+                          <>
+                               {/* Header */}
                               <div className="bg-slate-500 px-4 py-2 mb-2">
                                    <span className="label-text">To:</span>
                                    <span className="text-gray-900 font-bold"> Faraz Ashraf</span>
@@ -18,7 +19,8 @@ const MessageContainer = () => {
 
                               {/* Messages */}
                               <Messages />
-                              <MessageInput /></>
+                              <MessageInput />
+                              </>
                     }
                </>
           </div>
