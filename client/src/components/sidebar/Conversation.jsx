@@ -1,23 +1,33 @@
+import useConversation from "../../zustand/useConversation"
 
-const Conversation = () => {
+const Conversation = ({ conversation ,  emoji , lastIdx}) => {
+  const {selectedConversation , setSelectedConversation} = useConversation();
+
+  const isSelected = selectedConversation?._id === conversation._id;
+
+  const handleClick = () => {
+    setSelectedConversation(conversation)
+  }
   return (
     <>
-      <div className="flex gap-2 items-center hover:bg-purple-400 rounded p-2 py-1 cursor-pointer">
+      <div className={`flex gap-2 items-center hover:bg-purple-400 rounded p-2 py-1 cursor-pointer ${isSelected ? "bg-sky-400" : ""}`} onClick={handleClick}>
         <div className="avatar online">
           <div className="w-12 rounded-full">
-            <img src="https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" alt="user-avaatr" />
+            <img src={conversation.profilePic} alt="user-avaatar" />
           </div>
         </div>
 
         <div className="flex flex-col flex-1">
           <div className="flex gap-3 justify-between">
-            <p className="font-medium text-black ">Aiman Fatima</p>
-            <span className="text-xl">😍</span>
+            <p className="font-medium text-black ">{conversation.fullName}</p>
+            <span className="text-xl">{emoji}</span>
           </div>
         </div>
       </div>
 
-      <div className="divider my-0 py-0 h-1 " />
+     {
+      !lastIdx &&  <div className="divider my-0 py-0 h-0.5 bg-gray-600 " />
+     }
     </>
   )
 }
